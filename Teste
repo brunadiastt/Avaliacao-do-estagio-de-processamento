@@ -1,0 +1,85 @@
+> bd_surveyquaest <- read_excel("C:/Users/bruna/Downloads/bd_surveyquaest.xlsx")
+Error in read_excel("C:/Users/bruna/Downloads/bd_surveyquaest.xlsx") : 
+  não foi possível encontrar a função "read_excel"
+  
+> ############# % de votos de todos os candidatos ###################
+
+> votos <-table(voto = bd_surveyquaest$voto1, sexo = bd_surveyquaest$sexo)
+> addmargins(votos)
+                     sexo
+voto                  Feminino Masculino  Sum
+  Candidato 1               11        31   42
+  Candidato 10              14         6   20
+  Candidato 11               1         2    3
+  Candidato 12               3         3    6
+  Candidato 13               2         1    3
+  Candidato 14               6         0    6
+  Candidato 2              295       228  523
+  Candidato 3                9         7   16
+  Candidato 4                4         8   12
+  Candidato 5               14        11   25
+  Candidato 6                7         3   10
+  Candidato 7                3         4    7
+  Candidato 8               14        12   26
+  Candidato 9                7        12   19
+  Ninguém/Branco/Nulo       72        70  142
+  NS/NR                     83        57  140
+  Sum                      545       455 1000
+> freqrel <- prop.table(table(voto = bd_surveyquaest$voto1, sexo = bd_surveyquaest$sexo))
+> addmargins(freqrel)
+                     sexo
+voto                  Feminino Masculino   Sum
+  Candidato 1            0.011     0.031 0.042
+  Candidato 10           0.014     0.006 0.020
+  Candidato 11           0.001     0.002 0.003
+  Candidato 12           0.003     0.003 0.006
+  Candidato 13           0.002     0.001 0.003
+  Candidato 14           0.006     0.000 0.006
+  Candidato 2            0.295     0.228 0.523
+  Candidato 3            0.009     0.007 0.016
+  Candidato 4            0.004     0.008 0.012
+  Candidato 5            0.014     0.011 0.025
+  Candidato 6            0.007     0.003 0.010
+  Candidato 7            0.003     0.004 0.007
+  Candidato 8            0.014     0.012 0.026
+  Candidato 9            0.007     0.012 0.019
+  Ninguém/Branco/Nulo    0.072     0.070 0.142
+  NS/NR                  0.083     0.057 0.140
+  Sum                    0.545     0.455 1.000
+> freqrel <- prop.table(table(voto = bd_surveyquaest$voto1, sexo = bd_surveyquaest$sexo)) * 100 
+> addmargins(freqrel)
+                     sexo
+voto                  Feminino Masculino   Sum
+  Candidato 1              1.1       3.1   4.2
+  Candidato 10             1.4       0.6   2.0
+  Candidato 11             0.1       0.2   0.3
+  Candidato 12             0.3       0.3   0.6
+  Candidato 13             0.2       0.1   0.3
+  Candidato 14             0.6       0.0   0.6
+  Candidato 2             29.5      22.8  52.3
+  Candidato 3              0.9       0.7   1.6
+  Candidato 4              0.4       0.8   1.2
+  Candidato 5              1.4       1.1   2.5
+  Candidato 6              0.7       0.3   1.0
+  Candidato 7              0.3       0.4   0.7
+  Candidato 8              1.4       1.2   2.6
+  Candidato 9              0.7       1.2   1.9
+  Ninguém/Branco/Nulo      7.2       7.0  14.2
+  NS/NR                    8.3       5.7  14.0
+  Sum                     54.5      45.5 100.0
+  
+  ################### candidato de oposicao ou situacao ##########################
+> avalgov <- table(avalgov = bd_surveyquaest$aval_gov)
+> avalgov
+avalgov
+             Boa            NS/NR            Ótima          Péssima Regular negativa 
+             443               14              181               64               74 
+Regular positiva             Ruim 
+             175               49 
+> freqrelgov <- prop.table(table(avalgov = bd_surveyquaest$aval_gov)) * 100
+> freqrelgov
+avalgov
+             Boa            NS/NR            Ótima          Péssima Regular negativa 
+            44.3              1.4             18.1              6.4              7.4 
+Regular positiva             Ruim 
+            17.5              4.9 
